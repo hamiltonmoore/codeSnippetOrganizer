@@ -24,3 +24,22 @@ app.use(express.static(path.join(__dirname, "./public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger("dev"));
 
+
+//authorization on signup page// 
+app.get("/signup", function (req, res) {
+    res.render("signup");
+})
+
+app.post("/signup", function (req, res) {
+    let newUser = new User(req.body);
+    let salt = bcrypt.genSaltSync(10);
+    newUser.password = bcrypt.hashSync(newUser.password, salt);
+    newUser
+        .save()
+        .then(function (savedUser) {
+            res.redirect("/login")
+        })
+        .catch(function (err) {
+            res.status(500).send(err);
+        });
+});
