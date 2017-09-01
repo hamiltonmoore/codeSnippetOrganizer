@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>homepage</title>
 </head>
 
 <body>
     <div class="wrapper">
         <div class="container">
+            <h1>Snippet Storage Box</h1>
             <div class="snippets">
                 <h1>Snippet List</h1>
                 {{#snippet}}
-                <a href="/edit/{{_id}}">edit</a>
                 <p>title: {{title}} language: {{language}}</p>
                 <p> notes: {{notes}}</p>
                 <p>body: {{body}</p>
@@ -22,9 +22,18 @@
                 <p>Click the make a snippet button</p>
                 {{/snippet}}
             </div>
-            <div class="createASnippet">
+            <div class="createSnippet">
+                <form action="/createSnippet" method="POST">
+                    <button type="submit">Make a snippet</button>
+                </form>
             </div>
-            <div class="viewASnippet">
+            <div class="viewSnippet">
+                <form action="/viewSnippet" method="POST">
+                    <button type="submit">View this Snippet</button>
+                </form>
+                <form action="/delete/{{_id}}" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
             </div>
         </div>
     </div>

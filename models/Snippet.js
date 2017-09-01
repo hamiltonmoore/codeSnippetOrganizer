@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-    name: {
+const snippetSchema = new Schema({
+    title: {
         type: String,
         required: true
     },
@@ -15,8 +15,14 @@ const userSchema = new Schema({
         required: true
     },
     email: String,
+    university: String,
+    job: {
+        type: String,
+        default: ''
+    },
+    avatar: String,
 });
 
-let User = mongoose.model("Users", userSchema);
+let Snippet = mongoose.model("Snippet", snippetSchema);
 
-module.exports = User;
+module.exports = Snippet;
