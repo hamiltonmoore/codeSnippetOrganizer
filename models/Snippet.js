@@ -15,12 +15,6 @@ const snippetSchema = new Schema({
         required: true
     },
     email: String,
-    university: String,
-    job: {
-        type: String,
-        default: ''
-    },
-    avatar: String,
 });
 
 let Snippet = mongoose.model("Snippet", snippetSchema);

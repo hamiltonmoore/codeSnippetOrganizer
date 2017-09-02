@@ -1,12 +1,13 @@
 const express = require("express");
-const loginSignupRoutes = express.Router();
+const authRoutes = express.Router();
+const User = require("../models/Users");
 
 //authorization on signup page// 
-loginSignupRoutes.get("/signup", function (req, res) {
+authRoutes.get("/signup", function (req, res) {
     res.render("signup");
 })
 
-loginSignupRoutes.post("/signup", function (req, res) {
+authRoutes.post("/signup", function (req, res) {
     let newUser = new User(req.body);
     let salt = bcrypt.genSaltSync(10);
     newUser.password = bcrypt.hashSync(newUser.password, salt);
@@ -21,11 +22,11 @@ loginSignupRoutes.post("/signup", function (req, res) {
 });
 
 //signin - password check
-loginSignupRoutes.get("/login", function (req, res) {
-    res.render("login");
+authRoutes.get("/login", function (req, res) {
+    return res.render("login");
 })
 
-loginSignupRoutes.post("/login", function (req, res) {
+authRoutes.post("/login", function (req, res) {
     let reqUsername = req.body.username;
     let reqPassword = req.body.password;
 
@@ -46,4 +47,4 @@ loginSignupRoutes.post("/login", function (req, res) {
     });
 });
 
-module.exports = loginSignupRoutes; 
+module.exports = authRoutes; 

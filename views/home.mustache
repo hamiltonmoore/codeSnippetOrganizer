@@ -12,14 +12,18 @@
     <div class="wrapper">
         <div class="container">
             <h1>Snippet Storage Box</h1>
+            <nav>
+                <a href="/auth/login">login</a>
+                <a href="/auth/signup">signup</a>
+            </nav>
             <div class="snippets">
                 <h1>Snippet List</h1>
                 {{#snippet}}
                 <p>title: {{title}} language: {{language}}</p>
                 <p> notes: {{notes}}</p>
-                <p>body: {{body}</p>
+                <p>body:{{body}}</p>
                 {{/snippet}} {{^snippet}}
-                <p>Click the make a snippet button</p>
+                <p>Click on the make a snippet button</p>
                 {{/snippet}}
             </div>
             <div class="createSnippet">

@@ -1,9 +1,24 @@
 const express = require('express');
-const homeRoutes = express.Router();
 const Snippet = require("../models/Snippet");
+const indexRoutes = express.Router();
+
+//displays all data/snippets from db 
+indexRoutes.get("/", function (req, res) {
+    console.log("this is a test for route /:")
+    Snippet.find()
+        .then(function (foundSnippet) {
+            if (!foundSnippet) {
+                return res.send({ msg: "No Snippets found" })
+            }
+            return res.render("home") //this passes data through { Snippet: foundSnippet });
+        })
+        .catch(function (err) {
+            return res.status(500).send(err);
+        })
+})
 
 //this posts new information in the database
-homeRoutes.post("/newSnippet", function (req, res) {
+indexRoutes.post("/newSnippet", function (req, res) {
     let newSnippet = new Snippet(req.body); //is this a method?? //what is an instance
     console.log("this is the array: ", newSnippet);
     newSnippet
@@ -16,22 +31,8 @@ homeRoutes.post("/newSnippet", function (req, res) {
         })
 });
 
-//displays all data/snippets from db 
-homeRoutes.get("/", function (req, res) {
-    console.log("this is a test for route /:")
-    Snippet.find()
-        .then(function (foundSnippet) {
-            if (!foundSnippet) {
-                return res.send({ msg: "No Snippets found" })
-            }
-            return res.render("home", { Snippet: foundSnippet });
-        })
-        .catch(function (err) {
-            return res.status(500).send(err);
-        })
-})
-//find specific languages
-homeRoutes.get("/language/:id", function (req, res) {
+// find specific languages
+indexRoutes.get("/language/:id", function (req, res) {
     users.find({ language: { $ne: null } }).then((thatLanguage) => {
         if (!thatLanguage) {
             res.status(500).send("no snippets with that language");
@@ -40,8 +41,7 @@ homeRoutes.get("/language/:id", function (req, res) {
     })
 });
 
-//delete a snipppet 
-homeRoutes.post("/delete/:id", function (req, res) {
+indexRoutes.post("/delete/:id", function (req, res) {
     User.findByIdAndRemove(req.params.id)
         .then(function () {
             res.redirect("/");
@@ -51,4 +51,4 @@ homeRoutes.post("/delete/:id", function (req, res) {
         });
 });
 
-module.exports = homeRoutes;
+module.exports = indexRoutes;

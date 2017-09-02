@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/main.css">
-    <title>Document</title>
+    <title>login</title>
 </head>
 
 <body>
@@ -17,13 +17,13 @@
             {{.}}
         {{/errors}}
         <a href="/">Home</a>
-        <form action="/login" method="POST">
         <div class="formColumn">
+        <form action="/login" method="POST">
             <input type="text" name="username">
             <input type="password" name="password">
             <button type="submit">Log In</button>
-        </div>
         </form>
+        </div>
     </div>
     </div>
 </body>
