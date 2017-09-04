@@ -18,7 +18,7 @@ indexRoutes.get("/", function (req, res) {
 })
 
 //this posts new information in the database
-indexRoutes.post("/newSnippet", function (req, res) {
+indexRoutes.post("/createSnippet", function (req, res) {
     let newSnippet = new Snippet(req.body); //is this a method?? //what is an instance
     console.log("this is the array: ", newSnippet);
     newSnippet

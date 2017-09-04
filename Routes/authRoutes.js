@@ -1,6 +1,7 @@
 const express = require("express");
 const authRoutes = express.Router();
 const User = require("../models/Users");
+const bcrypt = require("bcryptjs");
 
 //authorization on signup page// 
 authRoutes.get("/signup", function (req, res) {
@@ -9,22 +10,24 @@ authRoutes.get("/signup", function (req, res) {
 
 authRoutes.post("/signup", function (req, res) {
     let newUser = new User(req.body);
+    console.log('newUser: ', newUser);
+
     let salt = bcrypt.genSaltSync(10);
     newUser.password = bcrypt.hashSync(newUser.password, salt);
     newUser
         .save()
         .then(function (savedUser) {
-            res.redirect("/login")
+            res.redirect("/auth/login")
         })
         .catch(function (err) {
             res.status(500).send(err);
         });
 });
 
-//signin - password check
 authRoutes.get("/login", function (req, res) {
     return res.render("login");
 })
+
 
 authRoutes.post("/login", function (req, res) {
     let reqUsername = req.body.username;

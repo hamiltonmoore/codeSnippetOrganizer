@@ -11,27 +11,30 @@ const bluebird = require("bluebird"); //allows you to do the .thens etc
 
 const indexRoutes = require("./Routes/indexRoutes");
 const authRoutes = require("./Routes/authRoutes");
-const users = require("./models/Users");
+const User = require("./models/Users");
 const Snippet = require("./models/Snippet");
 
 const dbUrl = "mongodb://localhost:27017/codeSnippetOrganizer";
 mongoose.Promise = bluebird;
 let db = mongoose.connect(dbUrl);
-const mongo = require("mongodb");
 const port = process.env.PORT || 8000
 
 const app = express();
 
+//templating engine
 app.engine("mustache", mustacheExpress());
 app.set("views", "./views");
 app.set("view engine", "mustache");
 
-app.use("/", indexRoutes);
-app.use("/auth", authRoutes);
+//middleware
 app.use(session(sessionConfig));
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger("dev"));
+
+//routes
+app.use("/", indexRoutes);
+app.use("/auth", authRoutes);
 
 app.listen(port, function () {
     console.log(`server is running on port ${port}!`);

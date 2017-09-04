@@ -22,21 +22,23 @@
                 <p>title: {{title}} language: {{language}}</p>
                 <p> notes: {{notes}}</p>
                 <p>body:{{body}}</p>
+                <form action="/viewSnippet" method="POST">
+                    <button type="submit">View this Snippet</button>
+                </form>
+                <form action="/delete/{{_id}}" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
                 {{/snippet}} {{^snippet}}
                 <p>Click on the make a snippet button</p>
                 {{/snippet}}
             </div>
             <div class="createSnippet">
                 <form action="/createSnippet" method="POST">
+                    <input type="text" name="title" placeholder="title">
+                    <input type="text" name="language" placeholder="language">
+                    <textarea rows="3" cols="50" placeholder="notes"></textarea>
+                    <textarea rows="5" cols="50" placeholder="your snippet"></textarea>
                     <button type="submit">Make a snippet</button>
-                </form>
-            </div>
-            <div class="viewSnippet">
-                <form action="/viewSnippet" method="POST">
-                    <button type="submit">View this Snippet</button>
-                </form>
-                <form action="/delete/{{_id}}" method="POST">
-                    <button type="submit">Delete</button>
                 </form>
             </div>
         </div>
