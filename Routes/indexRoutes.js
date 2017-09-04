@@ -10,7 +10,7 @@ indexRoutes.get("/", function (req, res) {
             if (!foundSnippet) {
                 return res.send({ msg: "No Snippets found" })
             }
-            return res.render("home") //this passes data through { Snippet: foundSnippet });
+            return res.render("home", { Snippet: foundSnippet })
         })
         .catch(function (err) {
             return res.status(500).send(err);
@@ -29,6 +29,7 @@ indexRoutes.post("/createSnippet", function (req, res) {
         .catch(function (err) {    //.catch returns errors 
             return res.status(500).send(err);
         })
+    consol.log("test for saved snippet: ", savedSnippet);
 });
 
 // find specific languages
@@ -42,7 +43,7 @@ indexRoutes.get("/language/:id", function (req, res) {
 });
 
 indexRoutes.post("/delete/:id", function (req, res) {
-    User.findByIdAndRemove(req.params.id)
+    Snippet.findByIdAndRemove(req.params.id)
         .then(function () {
             res.redirect("/");
         })

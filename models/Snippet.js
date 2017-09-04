@@ -6,15 +6,14 @@ const snippetSchema = new Schema({
         type: String,
         required: true
     },
-    username: {
+    language: {
         type: String,
         required: true
     },
-    password: {
+    notes: {
         type: String,
-        required: true
     },
-    email: String,
+    body: String,
 });
 
 let Snippet = mongoose.model("Snippet", snippetSchema);
