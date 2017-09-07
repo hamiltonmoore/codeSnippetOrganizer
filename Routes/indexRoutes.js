@@ -4,7 +4,6 @@ const indexRoutes = express.Router();
 
 //displays all data/snippets from db 
 indexRoutes.get("/", function (req, res) {
-    console.log("this is a test for route /:")
     Snippet.find()
         .then(function (foundSnippet) {
             if (!foundSnippet) {
@@ -16,6 +15,20 @@ indexRoutes.get("/", function (req, res) {
             return res.status(500).send(err);
         })
 })
+
+indexRoutes.get("/viewSnippet/:id", function (req, res) {
+    Snippet.findById(req.params.id)
+        .then(function (foundSnippet) {
+            if (!foundSnippet) {
+                return res.send({ msg: "No Snippet Found" })  //note the absence of plurality 
+            }
+            console.log("foundSnippet = ", foundSnippet);
+            res.render("view", { Snippet: foundSnippet })
+        })
+        .catch(function (err) {
+            res.status(500).send(err);
+        })
+});
 
 //this posts new information in the database
 indexRoutes.post("/createSnippet", function (req, res) {
@@ -29,7 +42,6 @@ indexRoutes.post("/createSnippet", function (req, res) {
         .catch(function (err) {    //.catch returns errors 
             return res.status(500).send(err);
         })
-    consol.log("test for saved snippet: ", savedSnippet);
 });
 
 // find specific languages
