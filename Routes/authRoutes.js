@@ -28,7 +28,6 @@ authRoutes.get("/login", function (req, res) {
     return res.render("login");
 })
 
-
 authRoutes.post("/login", function (req, res) {
     let reqUsername = req.body.username;
     let reqPassword = req.body.password;
@@ -46,8 +45,14 @@ authRoutes.post("/login", function (req, res) {
 
         delete foundUser.password;
         req.session.user = foundUser;
+        console.log("this is found user:", foundUser);
         return res.redirect("/");
     });
 });
+
+authRoutes.post("/logout", function (req, res) {
+    req.session.destroy()
+    res.redirect("/");
+})
 
 module.exports = authRoutes; 

@@ -9,7 +9,7 @@ indexRoutes.get("/", function (req, res) {
             if (!foundSnippet) {
                 return res.send({ msg: "No Snippets found" })
             }
-            return res.render("home", { Snippet: foundSnippet })
+            return res.render("home", { user: req.session.user, Snippet: foundSnippet })
         })
         .catch(function (err) {
             return res.status(500).send(err);
@@ -63,5 +63,15 @@ indexRoutes.post("/delete/:id", function (req, res) {
             res.status(500).send(err);
         });
 });
+
+indexRoutes.get("/:language", function (req, res) {
+    console.log("something Dakota said to do:", req.params.language)
+    Snippet.find({ language: req.params.language })
+        .then((foundLanguage) => {
+            if (!foundLanguage) res.status(500).send(`no ${req.params.language} snippets`);
+            return res.render("home", { user: req.session.user, Snippet: foundLanguage })
+        });
+});
+
 
 module.exports = indexRoutes;

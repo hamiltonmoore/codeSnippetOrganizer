@@ -18,6 +18,8 @@
             </nav>
             <div class="snippets">
                 <h1>Snippet List</h1>
+                {{#user}}<p>"Not {{username}}?, then <form action="/auth/logout" method="POST"><button type="submit">logout</button></form> </p>
+                {{/user}}
                 {{#Snippet}}
                 <p>title: {{title}} language: {{language}}</p>
                 <p> notes: {{notes}}</p>
@@ -38,11 +40,24 @@
             <section class="createSnippet">
                 <form action="/createSnippet" method="POST">
                     <input type="text" name="title" placeholder="title">
-                    <input type="text" name="language" placeholder="language">
-                    <textarea rows="3" cols="50" name="notes" placeholder="notes"></textarea>
+                    <select name="language">
+                        <option value="Java">Java</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Node.js">Node.js</option>
+                        <option value="html">html</option>
+                        <option value="css">css</option>
+                    </select>
                     <textarea rows="5" cols="50" name="body" placeholder="your snippet"></textarea>
+                    <textarea rows="3" cols="50" name="notes" placeholder="notes"></textarea>
                     <button type="submit">create snippet</button>
                 </form>
+                <div class="language">
+                    <a href="/Java">Java</a>
+                    <a href="/JavaScript">JavaScript</a>
+                    <a href="/Node.js">Node.js</a>
+                    <a href="/html">html</a>
+                    <a href="/css">css</a>
+                </div>
             </section>
         </div>
     </div>

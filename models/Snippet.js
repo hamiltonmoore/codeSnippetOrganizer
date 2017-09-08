@@ -8,7 +8,8 @@ const snippetSchema = new Schema({
     },
     language: {
         type: String,
-        required: true
+        required: true,
+        enum: ["Java", "JavaScript", "Node.js", "html", "css"]
     },
     notes: {
         type: String,
