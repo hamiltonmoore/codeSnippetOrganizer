@@ -20,9 +20,14 @@
                 <h1>Snippet List</h1>
                 {{#user}}<p>"Not {{username}}?, then <form action="/auth/logout" method="POST"><button type="submit">logout</button></form> </p>
                 {{/user}}
+                <form action="/tag" method="POST">
+                    <input type="text" name="tag" placehoder="search by tag">
+                    <button type="submit">search by tag</button>
+                </form>
                 {{#Snippet}}
                 <p>title: {{title}} language: {{language}}</p>
                 <p> notes: {{notes}}</p>
+                <p> tag: {{tag}} </p>
                 <p>body:{{body}}</p>
                 <form action="/viewSnippet/{{_id}}" method="GET">
                     <button type="submit">View this Snippet</button>
@@ -47,6 +52,7 @@
                         <option value="html">html</option>
                         <option value="css">css</option>
                     </select>
+                    <input type="text" name="tag" placeholder="tag">
                     <textarea rows="5" cols="50" name="body" placeholder="your snippet"></textarea>
                     <textarea rows="3" cols="50" name="notes" placeholder="notes"></textarea>
                     <button type="submit">create snippet</button>

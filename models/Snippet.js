@@ -11,9 +11,8 @@ const snippetSchema = new Schema({
         required: true,
         enum: ["Java", "JavaScript", "Node.js", "html", "css"]
     },
-    notes: {
-        type: String,
-    },
+    notes: String,
+    tag: String,
     body: String,
 });
 

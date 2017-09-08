@@ -22,7 +22,6 @@ indexRoutes.get("/viewSnippet/:id", function (req, res) {
             if (!foundSnippet) {
                 return res.send({ msg: "No Snippet Found" })  //note the absence of plurality 
             }
-            console.log("foundSnippet = ", foundSnippet);
             res.render("view", { Snippet: foundSnippet })
         })
         .catch(function (err) {
@@ -33,7 +32,6 @@ indexRoutes.get("/viewSnippet/:id", function (req, res) {
 //this posts new information in the database
 indexRoutes.post("/createSnippet", function (req, res) {
     let newSnippet = new Snippet(req.body); //is this a method?? //what is an instance
-    console.log("this is the array: ", newSnippet);
     newSnippet
         .save()
         .then(function (savedSnippet) { //.then returns a promise(something executed after something is finished)
@@ -65,7 +63,6 @@ indexRoutes.post("/delete/:id", function (req, res) {
 });
 
 indexRoutes.get("/:language", function (req, res) {
-    console.log("something Dakota said to do:", req.params.language)
     Snippet.find({ language: req.params.language })
         .then((foundLanguage) => {
             if (!foundLanguage) res.status(500).send(`no ${req.params.language} snippets`);
@@ -73,5 +70,12 @@ indexRoutes.get("/:language", function (req, res) {
         });
 });
 
+indexRoutes.post("/tag", function (req, res) {
+    Snippet.find({ tag: req.body.tag })
+        .then((foundTag) => {
+            if (!foundTag) res.status(500).send(`No snippets by the ${req.body.tag} tag`);
+            return res.render("home", { user: req.session.user, Snippet: foundTag })
+        })
+})
 
 module.exports = indexRoutes;
