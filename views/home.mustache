@@ -5,66 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/main.css">
     <title>homepage</title>
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="container">
-            <h1>Snippet Storage Box</h1>
+    <div class="container">
+        <h1>Snippet List</h1>
+        <div class="searchFunctions">
             <nav>
                 <a href="/auth/login">login</a>
-                <a href="/auth/signup">signup</a>
+                <a href="/auth/signup">signup</a> {{#user}}
             </nav>
-            <div class="snippets">
-                <h1>Snippet List</h1>
-                {{#user}}<p>"Not {{username}}?, then <form action="/auth/logout" method="POST"><button type="submit">logout</button></form> </p>
-                {{/user}}
-                <form action="/tag" method="POST">
-                    <input type="text" name="tag" placehoder="search by tag">
-                    <button type="submit">search by tag</button>
-                </form>
-                {{#Snippet}}
-                <p>title: {{title}} language: {{language}}</p>
-                <p> notes: {{notes}}</p>
-                <p> tag: {{tag}} </p>
-                <p>body:{{body}}</p>
-                <form action="/viewSnippet/{{_id}}" method="GET">
-                    <button type="submit">View this Snippet</button>
-                </form>
-                <form action="/delete/{{_id}}" method="POST">
-                    <button type="submit">Delete</button>
-                </form>
-                {{/Snippet}} {{^Snippet}}
-                <p>Click on the make a snippet button</p>
-                {{/Snippet}}
-            </div>
-            <section class="openWindow">
-                <button onclick="openCreateSnippet()">make a snippet</button>
-            </section>
-            <section class="createSnippet">
-                <form action="/createSnippet" method="POST">
-                    <input type="text" name="title" placeholder="title">
-                    <select name="language">
-                        <option value="Java">Java</option>
-                        <option value="JavaScript">JavaScript</option>
-                        <option value="Node.js">Node.js</option>
-                        <option value="html">html</option>
-                        <option value="css">css</option>
-                    </select>
-                    <input type="text" name="tag" placeholder="tag">
-                    <textarea rows="5" cols="50" name="body" placeholder="your snippet"></textarea>
-                    <textarea rows="3" cols="50" name="notes" placeholder="notes"></textarea>
-                    <button type="submit">create snippet</button>
-                </form>
-                <div class="language">
+            <p>"Not {{username}}?, then
+                <form action="/auth/logout" method="POST"><button type="submit">logout</button></form>
+            </p>
+            {{/user}}
+            <form action="/tag" method="POST">
+                <input type="text" name="tag" placehoder="search by tag">
+                <button type="submit">search by tag</button>
+            </form>
+            <div class="dropdown">
+                <button class="dropbtn">Dropdown</button>
+                <div class="dropdown-content">
                     <a href="/Java">Java</a>
                     <a href="/JavaScript">JavaScript</a>
                     <a href="/Node.js">Node.js</a>
                     <a href="/html">html</a>
                     <a href="/css">css</a>
                 </div>
-            </section>
+            </div>
+        </div>
+        {{#Snippet}}
+        <div class="theSnippets">
+            <p>title: {{title}} language: {{language}}</p>
+            <p> tag: {{tag}} </p>
+            <pre>body:{{body}}</pre>
+            <p> notes: {{notes}}</p>
+            <form action="/viewSnippet/{{_id}}" method="GET">
+                <button type="submit">View this Snippet</button>
+            </form>
+            <form action="/delete/{{_id}}" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        {{/Snippet}}
+        <div class="createSnippet">
+            <button onclick="openCreateSnippet()">make a snippet</button>
+            <form action="/createSnippet" method="POST">
+                <input type="text" name="title" placeholder="title">
+                <select name="language">
+                        <option value="Java">Java</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Node.js">Node.js</option>
+                        <option value="html">html</option>
+                        <option value="css">css</option>
+                    </select>
+                <input type="text" name="tag" placeholder="tag">
+                <textarea rows="5" cols="50" name="body" placeholder="your snippet"></textarea>
+                <textarea rows="3" cols="50" name="notes" placeholder="notes"></textarea>
+                <button type="submit">create snippet</button>
+            </form>
         </div>
     </div>
 </body>
