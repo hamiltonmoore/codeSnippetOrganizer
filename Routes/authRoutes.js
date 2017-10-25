@@ -1,6 +1,6 @@
 const express = require("express");
 const authRoutes = express.Router();
-const User = require("../models/Users");
+const User = require("./Users");
 const bcrypt = require("bcryptjs");
 
 //authorization on signup page// 

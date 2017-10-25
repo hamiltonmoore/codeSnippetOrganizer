@@ -11,7 +11,7 @@ const bluebird = require("bluebird"); //allows you to do the .thens etc
 
 const indexRoutes = require("./Routes/indexRoutes");
 const authRoutes = require("./Routes/authRoutes");
-const User = require("./models/Users");
+const User = require("./Routes/Users");
 const Snippet = require("./models/Snippet");
 
 
