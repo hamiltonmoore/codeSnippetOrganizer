@@ -92,7 +92,22 @@ button {
     min-height: 100vh;
 }
 
+.update {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
 .createSnippet form {
+    display: flex;
+    flex-direction: column;
+    border: .25rem solid #ffb732;
+    padding: 1rem;
+    border-radius: .75rem;
+}
+
+.update form {
     display: flex;
     flex-direction: column;
     border: .25rem solid #ffb732;
@@ -105,7 +120,19 @@ button {
     margin-bottom: .25rem;
 }
 
+.update input {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+}
+
 newSnippetBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+updateSnippetBox {
     display: flex;
     justify-content: center;
     align-items: center;

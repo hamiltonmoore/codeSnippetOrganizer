@@ -51,7 +51,7 @@ indexRoutes.get("/language/:id", function (req, res) {
     users.find({ language: { $ne: null } }).then((thatLanguage) => {
         if (!thatLanguage) {
             res.status(500).send("no snippets with that language");
-            return res.render("home", { users: employedBots })
+            return res.render("home")
         }
     })
 });

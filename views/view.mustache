@@ -5,15 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/main.css">
     <title>homepage</title>
 </head>
 
 <body>
-    <div class="container">
-    <header>
+    <div class="updateSnippetBox">
+    <header class=header>
         <nav>
-            <a href="/auth/login">login</a>
-            <a href="/auth/signup">signup</a>
             <a href="/">Home</a>
         </nav>
     </header>
@@ -21,7 +20,7 @@
     {{#Snippet}}
 <form action="/updateSnippet/{{_id}}" method="POST">
         <input type="text" name="title" value="{{title}}">
-            <select name="language" value="{{language}}">
+            <select name="language" value="{{language}}">{{language}}
                 <option value="Java">Java</option>
                 <option value="JavaScript">JavaScript</option>
                 <option value="Node.js">Node.js</option>
@@ -29,8 +28,8 @@
                 <option value="css">css</option>
                 </select>
             <input type="text" name="tag" value="{{tag}}">
-            <textarea rows="5" cols="50" name="body" value="{{body}}"></textarea>
-            <textarea rows="3" cols="50" name="notes" value="{{notes}}"></textarea>
+            <textarea rows="5" cols="50" name="body">{{body}}</textarea>
+            <textarea rows="3" cols="50" name="notes">{{notes}}</textarea>
             <button type="submit">update Snippet</button>
 </form>
     {{/Snippet}}
