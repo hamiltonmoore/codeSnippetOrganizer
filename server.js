@@ -17,7 +17,7 @@ const Snippet = require("./models/Snippet");
 
 const dbUrl = "mongodb://localhost:27017/codeSnippetOrganizer";
 mongoose.Promise = bluebird;
-let db = mongoose.connect(dbUrl);
+let db = mongoose.connect(MONGODB_URI || dbUrl);
 const port = process.env.PORT || 8000
 
 const app = express();
