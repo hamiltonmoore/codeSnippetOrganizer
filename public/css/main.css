@@ -1,5 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
 }
 
 .container {
@@ -9,10 +10,24 @@ body {
 
 header {
     position: fixed;
-    width: 80%;
+    width: 100%;
     display: flex;
+    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     top: 0px;
+    background-color: white;
+    border-bottom: .25rem solid #ffb732;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
+}
+
+p {
+    font-size: 1.3rem;
 }
 
 nav a {
@@ -29,13 +44,28 @@ nav a {
     flex-direction: column;
 }
 
+.dropdown a {
+    text-decoration: none;
+    color: black;
+    outline: none;
+}
+
+.action {
+    text-decoration: underline;
+}
+
 .container {}
 
 .theSnippets {
     border: .25rem solid #ffb732;
     border-radius: .75rem;
-    width: 50%;
+    margin: 1rem;
     height: 50%;
+    padding: 1rem;
+}
+
+.theSnippets form {
+    margin: .5rem;
 }
 
 button {
@@ -50,4 +80,5 @@ button {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 5rem;
 }
