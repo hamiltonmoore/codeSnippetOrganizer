@@ -65,6 +65,22 @@ indexRoutes.post("/delete/:id", function (req, res) {
             res.status(500).send(err);
         });
 });
+indexRoutes.post("/updateSnippet/:id", function (req, res) {
+    if (!req.body.job) {
+        req.body.job = null;
+    }
+
+    Snippet.findByIdAndUpdate(req.params.id, req.body)
+        .then(function (updatedSnippet) {
+            if (!updatedSnippet) {
+                return res.send({ msg: "could not update Snippet" });
+            }
+            res.redirect("/");
+        })
+        .catch(function (err) {
+            res.status(500).send(err);
+        });
+});
 
 indexRoutes.get("/:language", function (req, res) {
     Snippet.find({ language: req.params.language })

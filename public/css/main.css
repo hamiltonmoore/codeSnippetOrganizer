@@ -20,7 +20,11 @@ header {
     border-bottom: .25rem solid #ffb732;
 }
 
-header a {
+.header {
+    height: 4.35rem;
+}
+
+.homeLink {
     text-decoration: none;
     color: black;
     font-size: 1.3rem;
@@ -54,8 +58,6 @@ nav a {
     text-decoration: underline;
 }
 
-.container {}
-
 .theSnippets {
     border: .25rem solid #ffb732;
     border-radius: .75rem;
@@ -81,4 +83,36 @@ button {
     align-items: center;
     flex-direction: column;
     margin-top: 5rem;
+}
+
+.createSnippet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.createSnippet form {
+    display: flex;
+    flex-direction: column;
+    border: .25rem solid #ffb732;
+    padding: 1rem;
+    border-radius: .75rem;
+}
+
+.createSnippet input {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+}
+
+newSnippetBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+textarea {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
 }

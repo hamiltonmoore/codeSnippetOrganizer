@@ -9,25 +9,33 @@
 </head>
 
 <body>
-        <div class="container">
-        <header>
-            <nav>
-                <a href="/auth/login">login</a>
-                <a href="/auth/signup">signup</a>
-                <a href="/">Home</a>
-            </nav>
-            </header>
-            <div class="snippets">
-                {{#Snippet}}
-                <p>title: {{title}} language: {{language}}</p>
-                <p> notes: {{notes}}</p>
-                <p>body:{{body}}</p>
-                <form action="/delete/{{_id}}" method="POST">
-                    <button type="submit">Delete</button>
-                </form>
-                {{/Snippet}}
-            </div>
-        </div>
+    <div class="container">
+    <header>
+        <nav>
+            <a href="/auth/login">login</a>
+            <a href="/auth/signup">signup</a>
+            <a href="/">Home</a>
+        </nav>
+    </header>
+    <div class="update">
+    {{#Snippet}}
+<form action="/updateSnippet/{{_id}}" method="POST">
+        <input type="text" name="title" value="{{title}}">
+            <select name="language" value="{{language}}">
+                <option value="Java">Java</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Node.js">Node.js</option>
+                <option value="html">html</option>
+                <option value="css">css</option>
+                </select>
+            <input type="text" name="tag" value="{{tag}}">
+            <textarea rows="5" cols="50" name="body" value="{{body}}"></textarea>
+            <textarea rows="3" cols="50" name="notes" value="{{notes}}"></textarea>
+            <button type="submit">update Snippet</button>
+</form>
+    {{/Snippet}}
+</div>
+    </div>
 </body>
 
 </html>
