@@ -9,14 +9,15 @@
 </head>
 
 <body>
-    <div class="wrapper">
         <div class="container">
+        <header>
             <h1>Snippet Storage Box</h1>
             <nav>
                 <a href="/auth/login">login</a>
                 <a href="/auth/signup">signup</a>
                 <a href="/">Home</a>
             </nav>
+            </header>
             <div class="snippets">
                 <h1>Snippet List</h1>
                 {{#Snippet}}
@@ -29,7 +30,6 @@
                 {{/Snippet}}
             </div>
         </div>
-    </div>
 </body>
 
 </html>

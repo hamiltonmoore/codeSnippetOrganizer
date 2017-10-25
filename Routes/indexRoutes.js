@@ -29,6 +29,10 @@ indexRoutes.get("/viewSnippet/:id", function (req, res) {
         })
 });
 
+indexRoutes.get("/newSnippet", function (req, res) {
+    return res.render("newSnippet")
+});
+
 //this posts new information in the database
 indexRoutes.post("/createSnippet", function (req, res) {
     let newSnippet = new Snippet(req.body); //is this a method?? //what is an instance

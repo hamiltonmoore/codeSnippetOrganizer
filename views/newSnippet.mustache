@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>newSnippet</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/auth/login">login</a>
+            <a href="/auth/signup">signup</a>
+        </nav>
+        </header>
+        <div class="createSnippet">
+            <form action="/createSnippet" method="POST">
+                <input type="text" name="title" placeholder="title">
+                <select name="language">
+                        <option value="Java">Java</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Node.js">Node.js</option>
+                        <option value="html">html</option>
+                        <option value="css">css</option>
+                    </select>
+                <input type="text" name="tag" placeholder="tag">
+                <textarea rows="5" cols="50" name="body" placeholder="your snippet"></textarea>
+                <textarea rows="3" cols="50" name="notes" placeholder="notes"></textarea>
+                <button type="submit">create snippet</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
