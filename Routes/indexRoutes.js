@@ -57,29 +57,35 @@ indexRoutes.get("/language/:id", function (req, res) {
 });
 
 indexRoutes.post("/delete/:id", function (req, res) {
-    Snippet.findByIdAndRemove(req.params.id)
-        .then(function () {
-            res.redirect("/");
-        })
-        .catch(function (err) {
-            res.status(500).send(err);
-        });
+    if (req.session.user) {
+        Snippet.findByIdAndRemove(req.params.id)
+            .then(function () {
+                res.redirect("/");
+            })
+            .catch(function (err) {
+                res.status(500).send(err);
+            });
+    } else {
+        res.render("login");
+    }
 });
 indexRoutes.post("/updateSnippet/:id", function (req, res) {
     if (!req.body.job) {
         req.body.job = null;
     }
+    if (req.session.user) {
+        Snippet.findByIdAndUpdate(req.params.id, req.body)
 
-    Snippet.findByIdAndUpdate(req.params.id, req.body)
-        .then(function (updatedSnippet) {
-            if (!updatedSnippet) {
-                return res.send({ msg: "could not update Snippet" });
-            }
-            res.redirect("/");
-        })
-        .catch(function (err) {
-            res.status(500).send(err);
-        });
+            .then(function (updatedSnippet) {
+                if (!updatedSnippet) {
+                    return res.send({ msg: "could not update Snippet" });
+                }
+                res.redirect("/");
+            })
+            .catch(function (err) {
+                res.status(500).send(err);
+            });
+    } else { res.render("login") }
 });
 
 indexRoutes.get("/:language", function (req, res) {
