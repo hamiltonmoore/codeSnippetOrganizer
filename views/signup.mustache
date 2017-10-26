@@ -10,10 +10,12 @@
 </head>
 
 <body>
-    <div class="Container">
-        <div class="formContainer">
-            <h1>Sign Up</h1>
+    <div class="signupContainer">
+        <header>
+            <p>Sign Up</p>
             <a href="/">Home</a>
+            <a href="/auth/login">Login</a>
+        </header>
                 <div class="formColumn">
                 <form action="/auth/signup" method="POST">
                     <input type="text" name="username" placeholder="username">
@@ -22,7 +24,6 @@
                     <input type="password" name="password" placeholder="password">
                     <button type="Submit">Submit</button>
                 </form>
-                </div>
         </div>
     </div>
 </body>

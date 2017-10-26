@@ -10,14 +10,16 @@
 </head>
 
 <body>
-    <div class="inputContainer">
-    <div class="formContainer">
-        <h1>Log In</h1>
+    <div class="loginContainer">
+    <header>
+        <p>Log In</p>
         {{#username}}<p>"you are logged in as {{username}}"</p>{{/username}}
         {{#errors}}
             {{.}}
         {{/errors}}
         <a href="/">Home</a>
+        <a href="/auth/signup">Signup</a>
+        </header>
         <div class="formColumn">
         <form action="/auth/login" method="POST">
             <input type="text" name="username">
@@ -25,7 +27,6 @@
             <button type="submit">Log In</button>
         </form>
         </div>
-    </div>
     </div>
 </body>
 

@@ -115,24 +115,12 @@ button {
     border-radius: .75rem;
 }
 
-.createSnippet input {
+input {
     margin-top: .25rem;
     margin-bottom: .25rem;
 }
 
-.update input {
-    margin-top: .25rem;
-    margin-bottom: .25rem;
-}
-
-newSnippetBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-updateSnippetBox {
+.signupContainer, .loginContainer, updateSnippetBox {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,4 +130,21 @@ updateSnippetBox {
 textarea {
     margin-top: .25rem;
     margin-bottom: .25rem;
+}
+
+.formColumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 9rem;
+    width: 33%;
+    border: .25rem solid #ffb732;
+    border-radius: .75rem;
+}
+
+.formColumn form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
