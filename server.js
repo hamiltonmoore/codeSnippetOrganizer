@@ -15,7 +15,7 @@ const User = require("./Routes/Users");
 const Snippet = require("./models/Snippet");
 
 
-const dbUrl = "mongodb://hamlmoor:letmein7@ds235065.mlab.com:35065/codesnippetorganizer";
+const dbUrl = "mongorganizer";
 mongoose.Promise = bluebird;
 let db = mongoose.connect(dbUrl);
 const port = process.env.PORT || 8000
